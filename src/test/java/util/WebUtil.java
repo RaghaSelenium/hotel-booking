@@ -1,6 +1,5 @@
 package util;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
@@ -18,12 +17,6 @@ public class WebUtil {
 
     public static void typeIntoTextField(WebElement element, String text){
         element.sendKeys(text);
-    }
-
-//    public waitForElement();
-
-    public static void waitFor(WebDriver driver, int time) throws InterruptedException {
-        driver.wait(time);
     }
 
     public static int randomNumGenerator() {
