@@ -20,7 +20,7 @@ import static org.hamcrest.core.IsEqual.equalTo;
 /**
  * Created by raghavendra on 22/04/18.
  */
-public class TestFeatureSteps {
+public class HomePageFeatureSteps {
     public static String customerFirstName = null;
     List<List<String>> customerDetails;
     HashMap<String, String> expectedUserDetails = new HashMap<String, String>();
