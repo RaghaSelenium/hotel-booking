@@ -2,11 +2,6 @@ Feature:Feature:
   As a user
   I want to be able to view the availability
   So that i can book a room in a hotel
-#
-#  Scenario: Testing the configuration
-#    Given is a pre condition
-#    When is an action
-#    Then is an assertion
 
   Scenario: verify the hotel booking service is working
     Given I am on "Hotel booking form" page
