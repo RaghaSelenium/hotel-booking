@@ -1,13 +1,13 @@
 # hotel-booking
 
-hotel-booking is a test automation project for  http://hotel-test.equalexperts.io/. 
+hotel-booking is a test automation project to automate   http://hotel-test.equalexperts.io/. 
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+These instructions will get you a copy of the project up and running on your local Ubuntu machine for development and testing purposes.
 
 
-###Tools and Technologies
+### Tools and Technologies
 
 Java 1.8
 Apache Maven 3.0.5
@@ -25,11 +25,13 @@ Below things are prerequisites for this project
  Maven 
  https://maven.apache.org/install.html
  
+ Chrome version in ubuntu must be >= 65.0.3325.0 
+ 
  
   
 ### Running the tests:
  
- Chrome is the default browser, and the installed Chrome version in ubuntu must be >= 65.0.3325.0
+ Chrome is the default browser, and the installed 
  
  Note: Currently this project runs only on chrome browser (The chromeDriver inside the project works only for ubuntu 64 bit)
  
