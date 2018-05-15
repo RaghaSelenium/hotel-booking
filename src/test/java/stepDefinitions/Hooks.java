@@ -31,7 +31,6 @@ public class Hooks {
      */
     public void openBrowser() throws MalformedURLException {
 
-        System.out.println("********************************");
         System.out.println(desiredBrowser);
 
         initialiseBrowser(desiredBrowser);

@@ -23,12 +23,12 @@ import static org.hamcrest.core.IsEqual.equalTo;
 public class HomePageFeatureSteps {
     public static String customerFirstName = null;
     List<List<String>> customerDetails;
-    HashMap<String, String> expectedUserDetails = new HashMap<String, String>();
     private WebDriver driver = Hooks.driver;
     HomePage homePage = new HomePage(driver);
 
     @Given("^I am on \"(.*?)\" page$")
     public void i_am_on_page(String pageTitle) throws IOException {
+        
         driver.get(WebUtil.getProperty("url"));
 
         assertThat(driver.getTitle(), is(equalTo(pageTitle)));
