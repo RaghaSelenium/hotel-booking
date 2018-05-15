@@ -21,3 +21,7 @@ Running the tests from terminal
  mvn test "-Dbrowser=chrome" (to use any other browser)
  mvn test -Dcucumber.options="classpath:features/homePage.feature" to run specific feature.
  
+Test reports:
+ html test reports can be found under target/cucumer-html-reports
+ open index.html file in a browser to view the reports.
+ 
