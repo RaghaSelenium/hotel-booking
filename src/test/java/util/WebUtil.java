@@ -1,6 +1,5 @@
 package util;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
@@ -15,28 +14,30 @@ import java.util.Random;
  */
 public class WebUtil {
 
-    public static void typeIntoTextField(WebElement element, String text){
+    public static void typeIntoTextField(WebElement element, String text) {
         element.sendKeys(text);
     }
 
     public static int randomNumGenerator() {
-        Random r = new Random( System.currentTimeMillis() );
+        Random r = new Random(System.currentTimeMillis());
         return 10000 + r.nextInt(20000);
     }
 
-    public static void selectDropdown(WebElement element, String value){
-            Select drpCountry = new Select(element);
-            drpCountry.selectByVisibleText(value);
-        }
+    public static void selectDropdown(WebElement element, String value) {
+
+        Select select = new Select(element);
+        select.selectByVisibleText(value);
+    }
 
     public static String getProperty(String key) throws IOException {
+
         String propertyFilePath = "/home/developer/projects/hotel-booking/src/test/resources/configs/Configuration.properties";
+
         BufferedReader reader = new BufferedReader(new FileReader(propertyFilePath));
         Properties properties = new Properties();
         properties.load(reader);
-        String value = properties.getProperty(key);
 
-        return value;
+        return properties.getProperty(key);
 
     }
 
