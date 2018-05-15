@@ -18,9 +18,10 @@ import java.util.concurrent.TimeUnit;
  * Created by raghavendra on 22/04/18.
  */
 public class Hooks {
+
     public static WebDriver driver;
-    public static String driverPath = null ;
-    String userDirectory =  System.getProperty("user.dir");
+    private String userDirectory = System.getProperty("user.dir");
+    private String desiredBrowser = (System.getProperty("browser") != null) ? System.getProperty("browser") : "";
 
 
     @Before
@@ -30,43 +31,44 @@ public class Hooks {
      */
     public void openBrowser() throws MalformedURLException {
 
-        initialiseBrowser("chrome");
+        System.out.println("********************************");
+        System.out.println(desiredBrowser);
+
+        initialiseBrowser(desiredBrowser);
 
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
 
     }
+
     public void initialiseBrowser(String browser) {
-
-        if (browser.equalsIgnoreCase("CHROME")) {
-            System.out.println("************************");
-            System.setProperty("webdriver.chrome.driver","/usr/lib/chromium-browser/chromedriver");
-            driver = new ChromeDriver();
-
-        } else if (browser.equalsIgnoreCase("IE")) {
-            driver = new InternetExplorerDriver();
-
-        } else if (browser.equalsIgnoreCase("FIREFOX")) {
-            System.out.println("*******************************");
-//            System.setProperty("webdriver.gecko.driver",System.getProperty("user.dir")+"/src/test/resources/dependencies/geckodriver");
-            System.setProperty("webdriver.gecko.driver",userDirectory + "/src/test/resources/dependencies/geckodriver");
-            driver = new FirefoxDriver();
-
+        switch (browser.toLowerCase()) {
+            case "chrome":
+                System.setProperty("webdriver.chrome.driver", userDirectory + "/src/test/resources/dependencies/chromedriver");
+                driver = new ChromeDriver();
+                break;
+            case "firefox":
+                // set the system property for firefox
+                driver = new FirefoxDriver();
+                break;
+            case "ie":
+                // set the system property for IE
+                driver = new InternetExplorerDriver();
+                break;
+            default:
+                System.setProperty("webdriver.chrome.driver", userDirectory + "/src/test/resources/dependencies/chromedriver");
+                driver = new ChromeDriver();
         }
+
     }
-
-
-
-//    }
-
 
     @After
     public void embedScreenshot(Scenario scenario) {
 
-        if(scenario.isFailed()) {
+        if (scenario.isFailed()) {
             try {
                 scenario.write("Current Page URL is " + driver.getCurrentUrl());
-                byte[] screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
+                byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
                 scenario.embed(screenshot, "image/png");
             } catch (WebDriverException e) {
                 System.err.println(e.getMessage());
