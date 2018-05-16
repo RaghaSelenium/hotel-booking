@@ -10,13 +10,16 @@ These instructions will get you a copy of the project up and running on your loc
 ### Tools and Technologies
 
 Java 1.8
+
 Apache Maven 3.0.5
+
 Selenium WebDriver
+
 Cucumber
 
 ### Prerequisites
 
-Below things are prerequisites for this project
+Below technologies are prerequisites for this project
 
 
  java 1.8 
@@ -31,7 +34,7 @@ Below things are prerequisites for this project
   
 ### Running the tests:
  
- Chrome is the default browser, and the installed 
+ Chrome is the default browser
  
  Note: Currently this project runs only on chrome browser (The chromeDriver inside the project works only for ubuntu 64 bit)
  
@@ -46,9 +49,13 @@ Below things are prerequisites for this project
  
  mvn test -Dcucumber.options="classpath:features/homePage.feature" to run specific feature.
  
+ #### Running the tests from IDE:
+  Run the Runner class.
+
+ 
 ### Test reports:
 
  html test reports can be found under target/cucumer-html-reports
  
- open index.html file in a browser to view the reports.
+ open index.html file in a browser to view the html reports.
  
