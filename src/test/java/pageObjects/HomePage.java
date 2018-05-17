@@ -37,7 +37,7 @@ public class HomePage extends Base {
     @FindBy(id = "checkout")
     private WebElement checkOut;
 
-    @FindBy(xpath = "//div[@id='form']/div/div[7]/input")
+    @FindBy(xpath = ".//input[contains(@value,'Save')]")
     private WebElement saveButton;
 
     public HomePage(WebDriver driver) {
@@ -45,11 +45,15 @@ public class HomePage extends Base {
 
     }
 
+    /* this method finds and returns the booking details row of a specific customer
+    by first name (customerXpathBuilder) as there might be multiple customer records in the UI*/
     private List<WebElement> bookingDetailsList() {
         String userDetailsIdentifier = ".//p[contains(text(),'" + customerXpathBuilder + "')]/../..//div/p";
         return driver.findElements(By.xpath(userDetailsIdentifier));
     }
 
+    /* this method returns the delete button that is attached to a particular customer detail by
+    first name (customerXpathBuilder)  */
     public WebElement deleteButtonAttachedToCustomerRecord() {
         String userDetailsIdentifier = ".//p[contains(text(),'" + customerXpathBuilder + "')]/../..//div[7]";
         WebElement element;

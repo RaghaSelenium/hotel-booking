@@ -1,6 +1,6 @@
 Feature:Feature:
   As a user
-  I want to be able to view the availability
+  I want to be able to view the booking availability
   So that i can book a room in a hotel
 
   Scenario: verify the hotel booking service is working
