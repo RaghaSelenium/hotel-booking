@@ -47,8 +47,14 @@ public class Hooks {
                 driver = new ChromeDriver();
                 break;
             case "firefox":
-                // set the system property for firefox
-                System.setProperty("webdriver.gecko.driver", "/home/developer/projects/hotel-booking/src/test/resources/dependencies/geckodriver");
+                // currently supports firefox for Linux and Mac OS
+                if(System.getProperty("os.name").equalsIgnoreCase("Linux")){
+                    System.setProperty("webdriver.gecko.driver", userDirectory+"/src/test/resources/dependencies/geckodriver");
+                }
+                else {
+                    System.setProperty("webdriver.gecko.driver", userDirectory+"/src/test/resources/dependencies/geckodriverForMac");
+
+                }
                 driver = new FirefoxDriver();
                 break;
             case "ie":
@@ -62,7 +68,7 @@ public class Hooks {
 
     }
 
-    /* Currently supports Linux and Mac chromedriver */
+    /* Currently supports chromedriver for Linux and Mac  */
     private static void setChromePathAsPerOS(){
         if(System.getProperty("os.name").equalsIgnoreCase("Linux")){
             System.setProperty("webdriver.chrome.driver", userDirectory + "/src/test/resources/dependencies/chromedriver");
