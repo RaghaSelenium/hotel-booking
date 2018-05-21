@@ -5,6 +5,7 @@ hotel-booking is a test automation project to automate   http://hotel-test.equal
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local Ubuntu machine for development and testing purposes.
+Currently it supports chromeDriver for Mac and Linux.
 
 
 ### Tools and Technologies
@@ -36,7 +37,7 @@ Below technologies are prerequisites for this project
  
  Chrome is the default browser
  
- Note: Currently this project runs only on chrome browser (The chromeDriver inside the project works only for ubuntu 64 bit)
+ Note: Currently this project supports Firefox and chromedriver both for ubuntu 64 bit and Mac 64 bit
  
 #### Running the tests from terminal:
 
@@ -45,7 +46,7 @@ Below technologies are prerequisites for this project
 
  mvn test (runs on default chrome)
  
- mvn test "-Dbrowser=chrome" (to use any other browser)
+ mvn test "-Dbrowser=chrome" (to use any other browser, currently it works with chrome and firefox for Ubuntu and Mac OS)
  
  mvn test -Dcucumber.options="classpath:features/homePage.feature" to run specific feature.
  
