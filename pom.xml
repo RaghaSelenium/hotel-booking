@@ -17,6 +17,13 @@
             <version>1.2.5</version>
         </dependency>
 
+        <!-- These are the cucumber-junit dependencies -->
+        <dependency>
+            <groupId>info.cukes</groupId>
+            <artifactId>cucumber-junit</artifactId>
+            <version>1.2.5</version>
+        </dependency>
+
         <!-- These are the junit dependencies -->
         <dependency>
             <groupId>junit</groupId>
