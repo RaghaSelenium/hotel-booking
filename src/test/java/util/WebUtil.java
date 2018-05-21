@@ -31,8 +31,9 @@ public class WebUtil {
     }
 
     public static String getProperty(String key) throws IOException {
+        String path = "/src/test/resources/configs/Configuration.properties" ;
 
-        String propertyFilePath = userDirectory + "/src/test/resources/configs/Configuration.properties";
+        String propertyFilePath = userDirectory + path;
 
         BufferedReader reader = new BufferedReader(new FileReader(propertyFilePath));
         Properties properties = new Properties();

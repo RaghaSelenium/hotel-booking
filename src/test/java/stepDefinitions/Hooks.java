@@ -20,7 +20,7 @@ import java.util.concurrent.TimeUnit;
 public class Hooks {
 
     public static WebDriver driver;
-    private String userDirectory = System.getProperty("user.dir");
+    private static String userDirectory = System.getProperty("user.dir");
     private String desiredBrowser = (System.getProperty("browser") != null) ? System.getProperty("browser") : "";
 
 
@@ -43,11 +43,12 @@ public class Hooks {
     public void initialiseBrowser(String browser) {
         switch (browser.toLowerCase()) {
             case "chrome":
-                System.setProperty("webdriver.chrome.driver", userDirectory + "/src/test/resources/dependencies/chromedriver");
+                setChromePathAsPerOS();
                 driver = new ChromeDriver();
                 break;
             case "firefox":
                 // set the system property for firefox
+                System.setProperty("webdriver.gecko.driver", "/home/developer/projects/hotel-booking/src/test/resources/dependencies/geckodriver");
                 driver = new FirefoxDriver();
                 break;
             case "ie":
@@ -55,11 +56,22 @@ public class Hooks {
                 driver = new InternetExplorerDriver();
                 break;
             default:
-                System.setProperty("webdriver.chrome.driver", userDirectory + "/src/test/resources/dependencies/chromedriver");
+                setChromePathAsPerOS();
                 driver = new ChromeDriver();
         }
 
     }
+
+    /* Currently supports Linux and Mac chromedriver */
+    private static void setChromePathAsPerOS(){
+        if(System.getProperty("os.name").equalsIgnoreCase("Linux")){
+            System.setProperty("webdriver.chrome.driver", userDirectory + "/src/test/resources/dependencies/chromedriver");
+        }else {
+            System.setProperty("webdriver.chrome.driver", userDirectory + "/src/test/resources/dependencies/chromedriverForMac");
+
+        }
+    }
+
 
     @After
     public void embedScreenshot(Scenario scenario) {
