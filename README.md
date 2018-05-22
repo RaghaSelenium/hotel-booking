@@ -31,7 +31,6 @@ Below technologies are prerequisites for this project
  
  Chrome version in ubuntu must be >= 65.0.3325.0 
  
- 
   
 ### Running the tests:
  
@@ -39,8 +38,8 @@ Below technologies are prerequisites for this project
  
  Note: Currently this project supports Firefox and chromedriver both for ubuntu 64 bit and Mac 64 bit
  
-#### Running the tests from terminal:
 
+#### Running the tests from terminal:
 
  Go to your project directory from terminal and hit following commands
 
@@ -51,6 +50,7 @@ Below technologies are prerequisites for this project
  mvn test -Dcucumber.options="classpath:features/homePage.feature" to run specific feature.
  
  #### Running the tests from IDE:
+ 
   Run the Runner class.
 
  
