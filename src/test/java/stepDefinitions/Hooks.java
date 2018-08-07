@@ -20,7 +20,7 @@ import java.util.concurrent.TimeUnit;
 public class Hooks {
 
     public static WebDriver driver;
-    private String userDirectory = System.getProperty("user.dir");
+    private static String userDirectory = System.getProperty("user.dir");
     private String desiredBrowser = (System.getProperty("browser") != null) ? System.getProperty("browser") : "";
 
 
@@ -43,11 +43,18 @@ public class Hooks {
     public void initialiseBrowser(String browser) {
         switch (browser.toLowerCase()) {
             case "chrome":
-                System.setProperty("webdriver.chrome.driver", userDirectory + "/src/test/resources/dependencies/chromedriver");
+                setChromePathAsPerOS();
                 driver = new ChromeDriver();
                 break;
             case "firefox":
-                // set the system property for firefox
+                // currently supports firefox for Linux and Mac OS
+                if(System.getProperty("os.name").equalsIgnoreCase("Linux")){
+                    System.setProperty("webdriver.gecko.driver", userDirectory+"/src/test/resources/dependencies/geckodriver");
+                }
+                else {
+                    System.setProperty("webdriver.gecko.driver", userDirectory+"/src/test/resources/dependencies/geckodriverForMac");
+
+                }
                 driver = new FirefoxDriver();
                 break;
             case "ie":
@@ -55,11 +62,22 @@ public class Hooks {
                 driver = new InternetExplorerDriver();
                 break;
             default:
-                System.setProperty("webdriver.chrome.driver", userDirectory + "/src/test/resources/dependencies/chromedriver");
+                setChromePathAsPerOS();
                 driver = new ChromeDriver();
         }
 
     }
+
+    /* Currently supports chromedriver for Linux and Mac  */
+    private static void setChromePathAsPerOS(){
+        if(System.getProperty("os.name").equalsIgnoreCase("Linux")){
+            System.setProperty("webdriver.chrome.driver", userDirectory + "/src/test/resources/dependencies/chromedriver");
+        }else {
+            System.setProperty("webdriver.chrome.driver", userDirectory + "/src/test/resources/dependencies/chromedriverForMac");
+
+        }
+    }
+
 
     @After
     public void embedScreenshot(Scenario scenario) {

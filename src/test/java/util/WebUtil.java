@@ -13,6 +13,7 @@ import java.util.Random;
  * Created by raghavendra on 22/04/18.
  */
 public class WebUtil {
+    private static String userDirectory = System.getProperty("user.dir");
 
     public static void typeIntoTextField(WebElement element, String text) {
         element.sendKeys(text);
@@ -30,8 +31,9 @@ public class WebUtil {
     }
 
     public static String getProperty(String key) throws IOException {
+        String path = "/src/test/resources/configs/Configuration.properties" ;
 
-        String propertyFilePath = "/home/developer/projects/hotel-booking/src/test/resources/configs/Configuration.properties";
+        String propertyFilePath = userDirectory + path;
 
         BufferedReader reader = new BufferedReader(new FileReader(propertyFilePath));
         Properties properties = new Properties();
